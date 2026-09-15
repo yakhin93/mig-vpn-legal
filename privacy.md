@@ -1,81 +1,94 @@
-# Privacy Policy — MigVPN
+# Политика конфиденциальности MigVPN
 
-_Last updated: 2026-06-08_
+Обновлено: 15 сентября 2026 года.
 
-## What we collect
+Эта политика описывает обработку данных при использовании приложения MigVPN,
+Telegram-бота [@migvpnshop_bot](https://t.me/migvpnshop_bot), приглашений TestFlight
+и VPN-сервиса.
 
-MigVPN ("we", "the service") is a paid VPN. To provide the service we store
-the following information, and only the following information:
+## Какие данные мы обрабатываем
 
-1. **Subscription identity.** A 16-character licence key issued at purchase,
-   the plan it is on (trial / monthly / yearly), and its expiry timestamp.
-   We hash the key (HMAC-SHA256) before storing it; the cleartext key lives
-   only in your device's Keychain.
-2. **Account binding.** If you bought through our Telegram bot, your
-   Telegram user ID (numeric) and username (if public) are linked to the
-   licence key for support and renewal purposes.
-3. **Device binding.** A stable per-install UUID (Apple's
-   `identifierForVendor`) is associated with the licence to prevent
-   simultaneous use on multiple devices.
-4. **Provisioning material.** A WireGuard public key, a server-assigned
-   internal IP (10.10.1.x), and a preshared key for the tunnel. The
-   private key is encrypted at rest (AES-256-GCM) with a key kept in a
-   separate secret store from the database.
-5. **Liveness signal.** A `last_seen_at` timestamp that updates each time
-   your client checks in, so we can detect inactive accounts.
+- **Профиль и приглашение.** Telegram ID, имя пользователя Telegram, указанное
+  вами имя и адрес электронной почты. Имя и почта нужны для персонального
+  приглашения в TestFlight, связи с поддержкой и восстановления доступа.
+  Фамилия в новой анкете не запрашивается; ранее указанная фамилия может
+  оставаться в сохранённых данных приглашения. Пароль Apple мы не запрашиваем.
+- **Доступ и оплата.** Идентификаторы лицензии, тариф, срок действия, статус,
+  сведения об активации, идентификатор и сумма оплаты, если она проводится
+  через подключённый платёжный сервис. Реферальные коды, приглашения и бонусы
+  используются для работы партнёрской программы.
+- **Устройства и соединение.** Идентификатор установки, сведения о версии
+  приложения и совместимости, привязка доступа к устройству, параметры
+  VPN-туннеля, его ключи и внутренний сетевой адрес. Для проверки лицензий
+  используются хеши ключей; отдельные данные доступа хранятся в зашифрованном
+  виде для активации и восстановления.
+- **Техническая активность.** Время последнего обращения приложения,
+  наблюдаемые события обмена VPN с сервером, объёмы полученных и отправленных
+  данных, почасовые и суточные показатели использования. Эти данные могут быть
+  связаны с лицензией и отображаются в закрытой панели администратора.
+  Время обмена VPN не обязательно означает присутствие человека онлайн.
+- **Поддержка и диагностика.** Сообщения, которые вы отправляете поддержке,
+  предоставленные вами снимки экрана и журналы, а также технические сведения
+  об ошибках, необходимые для работы и диагностики сервиса. Не присылайте
+  пароли и другие данные, не относящиеся к обращению.
 
-## What we do NOT collect
+При подключении сетевой инфраструктуре доступен исходный IP-адрес соединения.
+Учёт объёма трафика описывает количество переданных данных, а не список
+посещённых сайтов. Для статистики использования в админке не сохраняются
+содержимое страниц, переписка или содержимое передаваемых файлов.
 
-- **Traffic.** We do not log, inspect, or store the contents of any
-  packets that pass through the VPN.
-- **Browsing history.** We do not collect URLs, hostnames, DNS queries,
-  destination IPs, or any record of what you connect to through the
-  tunnel.
-- **Bandwidth attribution.** We do not retain per-user byte counters or
-  session-by-session usage logs.
-- **Crash/analytics SDKs.** The app does not embed third-party trackers,
-  advertising IDs, AppsFlyer, Firebase Analytics, or Apple's
-  `AppTrackingTransparency` framework.
+## Для чего нужны данные
 
-## How we use it
+Мы используем данные, чтобы пригласить вас в тестирование, выдать и проверить
+доступ, настроить VPN, продлить подписку, восстановить доступ, начислить бонусы,
+обработать обращения и выявить технические проблемы или злоупотребления.
 
-We use the items in "What we collect" only to:
-- validate your subscription is active when you connect,
-- issue new credentials on app reinstall using the same licence key,
-- send renewal/expiry reminders via the Telegram channel you used to buy,
-- prevent account sharing across more devices than the plan allows.
+## Какие сервисы участвуют в обработке
 
-We do not sell, rent, share, or otherwise disclose this information to
-third parties, advertisers, or data brokers.
+- **Telegram** передаёт сообщения и действия в боте и обрабатывает данные
+  в рамках собственной политики конфиденциальности.
+- **Apple / TestFlight** получает указанные имя и почту для приглашения в
+  тестирование. Перед запросом приглашения бот показывает данные и просит
+  подтвердить отправку. TestFlight также обрабатывает сведения о тестировании
+  по правилам Apple.
+- **Платёжные сервисы**, когда вы ими пользуетесь, самостоятельно обрабатывают
+  платёжные данные. MigVPN получает сведения, необходимые для подтверждения
+  оплаты и выдачи доступа.
+- **Хостинг и сетевая инфраструктура** обеспечивают работу сервиса. Основная
+  база данных размещена на управляемом нами сервере в Таллине, Эстония.
+  При использовании резервного режима может задействоваться инфраструктура
+  WB Stream или Яндекс Телемост; участвующие сервисы могут обрабатывать
+  технические данные соединения по собственным правилам.
 
-## Where data lives
+Мы не продаём данные пользователей рекламодателям. Доступ к административным
+данным ограничен средствами авторизации. Для восстановления сервиса создаются
+резервные копии.
 
-- **PostgreSQL** on a server we control in Tallinn, Estonia.
-- **Encrypted backups** are taken daily and rotated at 30 days.
-- The Telegram bot stores no message history outside its own Telegram
-  account; we do not export Telegram conversations.
+## Сроки хранения
 
-## Retention
+Подробные почасовые измерения трафика и история наблюдаемого обмена VPN
+хранятся до 90 дней и очищаются сборщиком. Суточные итоги, сведения о лицензии,
+приглашениях, оплатах и административных операциях хранятся отдельно для
+поддержки доступа, учёта и восстановления сервиса; срок 90 дней на них
+не распространяется.
 
-- Active subscriptions: stored until the user requests deletion OR 30
-  days after the subscription expires.
-- Expired subscriptions: anonymised after 30 days (key hash kept for
-  reissue, all Telegram and device bindings dropped).
-- Server VPN peer block: removed automatically by the expiry sweeper
-  when the subscription lapses.
+Истечение подписки само по себе не удаляет профиль. Запрос на удаление можно
+направить в поддержку. После удаления из действующей системы данные могут
+временно сохраняться в резервных копиях до их замены или удаления. Если часть
+сведений необходимо сохранить для расчётов или исполнения применимых
+обязанностей, мы сообщим об этом при обработке запроса.
 
-## Your rights
+## Управление данными и обращения
 
-You may at any time:
-- Request a full export of your stored data (email below).
-- Request immediate deletion (`/delete` in the Telegram bot, or email).
-- Revoke the active device and reissue credentials to a new install.
+Вы можете обратиться за сведениями о сохранённых данных, попросить исправить
+имя или почту, удалить профиль либо прекратить использование сервиса.
+Для защиты вашего доступа поддержка может попросить подтвердить принадлежность
+аккаунта. Удаление данных, необходимых для VPN, может прекратить работу доступа.
 
-## Contact
+Поддержка и вопросы о конфиденциальности:
+[написать в Telegram — @thetopadmin](https://t.me/thetopadmin).
 
-Telegram: `@mig_support`
-Email: `legal@mig.app`
+## Изменения политики
 
-This policy is provided in English; the Russian translation hosted at the
-same path is informational, and the English version governs in case of
-discrepancy.
+Актуальная русская версия публикуется на этой странице. Дата обновления
+указана в начале документа.
